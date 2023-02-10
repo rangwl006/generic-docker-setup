@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  build-application-builder:
+    image: ${DOCKER_IMAGE}:${DOCKER_IMAGE_TAG}
+    build: ./docker
+
+  hello-world:
+    image: ${DOCKER_IMAGE}:${DOCKER_IMAGE_TAG}
+    container_name: hello-world
+    volumes:
+      - ./scripts:/scripts:rw
+    entrypoint: ["/scripts/entrypoint.sh"]
